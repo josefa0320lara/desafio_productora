@@ -19,8 +19,10 @@ class Group < ApplicationRecord
 
     def lastConcert
         lastConcert = self.concerts.map { |concert| concert.date}.max
-        lastConcertInWords = lastConcert.strftime("%Y-%B-%A")
-        "#{lastConcert} / #{lastConcertInWords}"
+        if lastConcert
+            lastConcertInWords = lastConcert.strftime("%Y-%B-%A")
+            "#{lastConcert} / #{lastConcertInWords}"
+        end
     end 
 
     def maxAttendance
